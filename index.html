@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!-- ================ || INSTRUÇÕES INICIAIS | BASIC INSTRUCTIONS || =================== -->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XPTO | Gestão e Tecnologia Digitais</title>
+    <link rel="icon" type="image/png" href="./assets/favicon.ico">
+    <!-- | Estilização: Fontes e CSS | -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+    <!-- ========================== || CABEÇALHO | HEADER || ============================ -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="./assets/logo.png" alt="XPTO Logotipo" class="logo-brand">
+                <span class="logo-text">XPTO</span>
+            </a>
+
+            <!-- ========================= || NAVEGAÇÃO | NAVIGATION || ========================= -->          
+            <nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menu">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-links active">Home</a></li>
+                    <li><a href="sobre.html" class="nav-links">Sobre Nós</a></li>
+                    <li><a href="servicos.html" class="nav-links">Serviços</a></li>
+                    <li><a href="portfolio.html" class="nav-links">Portfólio</a></li>
+                    <li><a href="contato.html" class="nav-links">Contato</a></li>
+                    <li class="mobile-only-action"><a href="contato.html" class="btn btn-primary" style="width: 100%; text-align: center;">Falar Conosco</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="contato.html" class="btn btn-outline">Consultar Serviços </a>
+                <a href="contato.html" class="btn btn-primary">Falar Conosco</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ====================== || SEÇÃO PRINCIPAL | HERO SECTION || ====================== -->          
+    <main>
+        <section class="hero">
+            <div class="hero-container">
+                <!-- Coluna 1: Texto e Botões -->
+                <div class="hero-content">
+                    <span class="badge">Inovação e Transformação Digital</span>
+                    <h1 class="hero-title">A tecnologia que faz seu negócio <span>crescer.</span></h1>
+                    <p class="hero-description"> 
+                        Serviços e soluções tecnológicas dedicadas para modernizar processos e impulsionar a eficiência do seu negócio, tudo em nuvem.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="servicos.html" class="btn btn-primary">Conhecer Soluções</a>
+                        <a href="sobre.html" class="btn btn-outline">Falar com Consultor</a>
+                    </div>
+                </div>
+
+                <!-- Coluna 2: Imagem Principal (Mockup do Sistema) -->
+                <div class="hero-image">
+                    <iframe src="painel.html" width="100%" height="1350px" style="border: none; border-radius: 24px; background: transparent;"></iframe>
+                </div>
+            
+            <!-- Barra de Social Proof (Empresas parceiras - Estilo RD Station) -->
+            <div class="trusted-by">
+                <p>Empresas inovadoras que confiam na XPTO:</p>
+                <div class="trusted-logos">
+                    <!-- 💡 INSERIR IMAGENS AQUI 2:
+                         Sugestão: Logos de clientes ou parceiros em cor branca/cinza com fundo transparente. -->
+                    <img src="./assets/logo-cliente-1.png" alt="Cliente 1">
+                    <img src="./assets/logo-cliente-2.png" alt="Cliente 2">
+                    <img src="./assets/logo-cliente-3.png" alt="Cliente 3">
+                    <img src="./assets/logo-cliente-4.png" alt="Cliente 4">
+                </div>
+            </div>
+        </section>
+
+ <!-- =============== || SEÇÃO DE PRODUTOS E SERVIÇOS | SERVICES SECTION || ================= -->
+<section class="services-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="badge">Nossas Soluções</span>
+            <h2 class="section-title">Serviços & Produtos</h2>
+            <p class="section-subtitle">Conheça alguns dos nossos principais produtos e serviços XPTO.<br>Escolha os pacotes em nuvem ou monte sua solução sob medida para modernizar o seu negócio.</p>
+        </div>
+
+        <div class="services-grid">
+            
+            <!-- ==================== Categoria 1: SaaS (Sistemas) ==================== -->
+            
+            <!-- Card 1: XPTO STARTER -->
+            <article class="service-card">
+                <div class="card-header">
+                    <div class="service-icon">
+                        <!-- Ícone: Gestão Básica / Usuário com Check -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div class="card-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-meta">
+                    <span class="service-category">SaaS</span>
+                    <span class="service-price">R$ 149,90<small>/mês</small></span>
+                </div>
+                <h3>XPTO STARTER</h3>
+                <p>Sistema básico em nuvem focado no controle simplificado de clientes, agendas e registros de serviços.</p>
+            </article>
+
+            <!-- Card 2: XPTO PRO -->
+            <article class="service-card">
+                <div class="card-header">
+                    <div class="service-icon">
+                        <!-- Ícone: Gráfico de Vendas e Relatórios -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                    </div>
+                    <div class="card-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-meta">
+                    <span class="service-category">SaaS • Mais Popular</span>
+                    <span class="service-price">R$ 299,90<small>/mês</small></span>
+                </div>
+                <h3>XPTO PRO</h3>
+                <p>Sistema intermediário incluindo gestão de clientes, catálogo de serviços, controle de vendas e relatórios analíticos.</p>
+            </article>
+
+            <!-- Card 3: XPTO FULL -->
+            <article class="service-card">
+                <div class="card-header">
+                    <div class="service-icon">
+                        <!-- Ícone: ERP Completo / Camadas Integradas -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5"></path>
+                            <path d="M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <div class="card-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-meta">
+                    <span class="service-category">SaaS ERP</span>
+                    <span class="service-price">R$ 650,00<small>/mês</small></span>
+                </div>
+                <h3>XPTO FULL</h3>
+                <p>ERP completo em nuvem com controle de estoque, finanças, banco de dados dedicado e fluxo de caixa automatizado.</p>
+            </article>
+
+            <!-- ==================== Categoria 2: Add-Ons (Módulos) ==================== -->
+
+            <!-- Card 4: Cloud Backup -->
+            <article class="service-card">
+                <div class="card-header">
+                    <div class="service-icon">
+                        <!-- Ícone: Nuvem com Upload / Segurança -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
+                            <path d="M12 12v9"></path>
+                            <path d="m16 16-4-4-4 4"></path>
+                        </svg>
+                    </div>
+                    <div class="card-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-meta">
+                    <span class="service-category">Add-On</span>
+                    <span class="service-price">R$ 99,90<small>/mês</small></span>
+                </div>
+                <h3>Cloud Backup</h3>
+                <p>Espaço extra em nuvem com rotinas de backup automático para garantia total de segurança dos dados.</p>
+            </article>
+
+            <!-- Card 5: Emissor de Notas Fiscais -->
+            <article class="service-card">
+                <div class="card-header">
+                    <div class="service-icon">
+                        <!-- Ícone: Recibo / Nota Fiscal -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1z"></path>
+                            <line x1="8" y1="6" x2="16" y2="6"></line>
+                            <line x1="8" y1="10" x2="16" y2="10"></line>
+                            <line x1="8" y1="14" x2="12" y2="14"></line>
+                        </svg>
+                    </div>
+                    <div class="card-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-meta">
+                    <span class="service-category">Add-On</span>
+                    <span class="service-price">R$ 89,90<small>/mês</small></span>
+                </div>
+                <h3>Emissor de Notas Fiscais</h3>
+                <p>Módulo adicional de automação fiscal para emissão rápida e simplificada de NFe/NFCe direto do sistema.</p>
+            </article>
+
+            <!-- ==================== Categoria 3: Serviços de Tecnologia ==================== -->
+
+            <!-- Card 6: Migração de Dados -->
+            <article class="service-card">
+                <div class="card-header">
+                    <div class="service-icon">
+                        <!-- Ícone: Transferência de Dados / Servidores -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 1l4 4-4 4"></path>
+                            <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                            <path d="M7 23l-4-4 4-4"></path>
+                            <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                        </svg>
+                    </div>
+                    <div class="card-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-meta">
+                    <span class="service-category">Serviço Especializado</span>
+                    <span class="service-price">R$ 1.200,00<small>/único</small></span>
+                </div>
+                <h3>Pacote de Migração de Dados</h3>
+                <p>Extração, tratamento e migração segura do histórico e cadastros antigos do cliente para o novo sistema.</p>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+ <!--  ==================== || JAVASCRIPT - EFEITO MENU MOBILE || ====================  -->
+<script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
+
+
+</body>
+</html> 
+
+
+  <!--          
+            <h2>Bem-vindo à XPTO</h2>
+  <p>
+         Somos uma fornecedora e facilitadora tecnológica dedicada a modernizar processos e impulsionar a eficiência empresarial. Desenvolvemos infraestruturas robustas,integrações inteligentes e soluções sob medida para que sua empresa foque apenas no que faz de melhor: crescer.
+    </p>
+        </section>
+        <section>
+    <h2>Nossos Serviços em Destaque</h2>
+    
+    <div>
+        <h3>Consultoria em TI</h3>
+        <p>Ajudamos sua empresa a escolher as melhores tecnologias para crescer.</p>
+    </div>
+
+    <div>
+        <h3>Segurança da Informação</h3>
+        <p>Protegemos os dados do seu negócio contra ameaças digitais.</p>
+    </div>
+
+    <div>
+        <h3>Integração de Sistemas</h3>
+        <p>Conectamos suas ferramentas para automatizar o seu trabalho diário.</p>
+    </div>
+</section>
+    </main>-->
