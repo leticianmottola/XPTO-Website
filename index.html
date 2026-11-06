@@ -6,15 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XPTO | Gestão e Tecnologia Digitais</title>
     <link rel="icon" type="image/png" href="./assets/favicon.ico">
-    <!-- | Estilização: Fontes e CSS | -->
     <link rel="stylesheet" href="style.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 
 <body>
     <!-- ========================== || CABEÇALHO | HEADER || ============================ -->
@@ -59,7 +56,7 @@
                 <!-- Coluna 1: Texto e Botões -->
                 <div class="hero-content">
                     <span class="badge">Inovação e Transformação Digital</span>
-                    <h1 class="hero-title">A tecnologia que faz seu negócio <span>crescer.</span></h1>
+                    <h1 class="hero-title">A tecnologia que faz seu negócio crescer.</h1>
                     <p class="hero-description"> 
                         Serviços e soluções tecnológicas dedicadas para modernizar processos e impulsionar a eficiência do seu negócio, tudo em nuvem.
                     </p>
@@ -69,21 +66,33 @@
                     </div>
                 </div>
 
-                <!-- Coluna 2: Imagem Principal (Mockup do Sistema) -->
+                <!-- Coluna 2: Dashboard do Sistema -->
                 <div class="hero-image">
-                    <iframe src="painel.html" width="100%" height="1350px" style="border: none; border-radius: 24px; background: transparent;"></iframe>
+                    <iframe src="painel.html" scrolling="no" width="100%" height="850px" style="border: none;"></iframe>
                 </div>
             
-            <!-- Barra de Social Proof (Empresas parceiras - Estilo RD Station) -->
+            <!-- Carrossel de Empresas -->
             <div class="trusted-by">
-                <p>Empresas inovadoras que confiam na XPTO:</p>
-                <div class="trusted-logos">
-                    <!-- 💡 INSERIR IMAGENS AQUI 2:
-                         Sugestão: Logos de clientes ou parceiros em cor branca/cinza com fundo transparente. -->
-                    <img src="./assets/logo-cliente-1.png" alt="Cliente 1">
-                    <img src="./assets/logo-cliente-2.png" alt="Cliente 2">
-                    <img src="./assets/logo-cliente-3.png" alt="Cliente 3">
-                    <img src="./assets/logo-cliente-4.png" alt="Cliente 4">
+                <p>PMEs inovadoras que confiam na XPTO</p>
+                
+                <!-- trusted-logos-wrapper -->
+                <div class="trusted-logos-fade">
+                    <!-- trusted-logos-track-->
+                    <div class="trusted-logos-carousel">
+                        <img src="./assets/eisilogo.png" alt="Cliente 1">
+                        <img src="./assets/giomeilogo.png" alt="Cliente 2">
+                        <img src="./assets//investlogo.png" alt="Cliente 3">
+                        <img src="./assets/kimilogo.png" alt="Cliente 4">
+                        <img src="./assets/renovalogo.png" alt="Cliente 5">
+                        <img src="./assets/vianalogo.png" alt="Cliente 6">
+
+                        <img src="./assets/eisilogo.png" alt="Cliente 1" aria-hidden="true">
+                        <img src="./assets/giomeilogo.png" alt="Cliente 2" aria-hidden="true">
+                        <img src="./assets//investlogo.png" alt="Cliente 3" aria-hidden="true">
+                        <img src="./assets/kimilogo.png" alt="Cliente 4" aria-hidden="true">
+                        <img src="./assets/renovalogo.png" alt="Cliente 5" aria-hidden="true">
+                        <img src="./assets/vianalogo.png" alt="Cliente 6" aria-hidden="true">
+                    </div>
                 </div>
             </div>
         </section>
@@ -93,7 +102,7 @@
     <div class="container">
         <div class="section-header">
             <span class="badge">Nossas Soluções</span>
-            <h2 class="section-title">Serviços & Produtos</h2>
+            <h2 class="section-title">Serviços & Produtos.</h2>
             <p class="section-subtitle">Conheça alguns dos nossos principais produtos e serviços XPTO.<br>Escolha os pacotes em nuvem ou monte sua solução sob medida para modernizar o seu negócio.</p>
         </div>
 
@@ -105,7 +114,6 @@
             <article class="service-card">
                 <div class="card-header">
                     <div class="service-icon">
-                        <!-- Ícone: Gestão Básica / Usuário com Check -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
                             <circle cx="12" cy="7" r="4"></circle>
@@ -130,7 +138,6 @@
             <article class="service-card">
                 <div class="card-header">
                     <div class="service-icon">
-                        <!-- Ícone: Gráfico de Vendas e Relatórios -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="18" y1="20" x2="18" y2="10"></line>
                             <line x1="12" y1="20" x2="12" y2="4"></line>
@@ -156,7 +163,6 @@
             <article class="service-card">
                 <div class="card-header">
                     <div class="service-icon">
-                        <!-- Ícone: ERP Completo / Camadas Integradas -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
                             <path d="M2 17l10 5 10-5"></path>
@@ -206,11 +212,10 @@
                 <p>Espaço extra em nuvem com rotinas de backup automático para garantia total de segurança dos dados.</p>
             </article>
 
-            <!-- Card 5: Emissor de Notas Fiscais -->
+            <!-- Card 5: Emissor de NFs -->
             <article class="service-card">
                 <div class="card-header">
                     <div class="service-icon">
-                        <!-- Ícone: Recibo / Nota Fiscal -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1z"></path>
                             <line x1="8" y1="6" x2="16" y2="6"></line>
@@ -239,7 +244,6 @@
             <article class="service-card">
                 <div class="card-header">
                     <div class="service-icon">
-                        <!-- Ícone: Transferência de Dados / Servidores -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M17 1l4 4-4 4"></path>
                             <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
@@ -261,11 +265,83 @@
                 <h3>Pacote de Migração de Dados</h3>
                 <p>Extração, tratamento e migração segura do histórico e cadastros antigos do cliente para o novo sistema.</p>
             </article>
+        </div>
+    </div>
+            <div class="service-button">
+                        <a href="servicos.html" class="btn btn-primary">Saiba Mais</a>
+            </div>
+</section>
+
+<!-- ==================== || PÚBLICO ALVO | TARGET AUDIENCE || ==================== -->
+<section class="segments-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="badge">Mercado & Aplicações</span>
+            <h2 class="section-title">Uma solução pensada para você.</h2>
+            <p class="section-subtitle">Tecnologia escalável e arquitetura em nuvem adaptadas às necessidades específicas da sua operação.</p>
+        </div>
+        <div class="segments-grid">
+            
+            <!-- Card 1: Tecnologia & SaaS -->
+            <article class="segment-card">
+                <div class="segment-overlay"></div>
+                <div class="segment-content">
+                    <h3>Tecnologia & SaaS</h3>
+                    <ul>
+                        <li>Startups & Scale-ups</li>
+                        <li>Software Houses</li>
+                        <li>Plataformas Digitais</li>
+                    </ul>
+                    <a href="contato.html" class="segment-arrow" aria-label="Ver soluções para Tecnologia">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Card 2: Serviços & Consultoria -->
+            <article class="segment-card">
+                <div class="segment-overlay"></div>
+                <div class="segment-content">
+                    <h3>Serviços & Consultoria</h3>
+                    <ul>
+                        <li>Escritórios & Agências</li>
+                        <li>Consultorias B2B</li>
+                        <li>Gestão Financeira</li>
+                    </ul>
+                    <a href="contato.html" class="segment-arrow" aria-label="Ver soluções para Serviços">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Card 3: Indústria & Logística -->
+            <article class="segment-card">
+                <div class="segment-overlay"></div>
+                <div class="segment-content">
+                    <h3>Indústria & Logística</h3>
+                    <ul>
+                        <li>Distribuidoras & Operadores</li>
+                        <li>Manufatura & Automação</li>
+                        <li>Cadeias de Suprimento</li>
+                    </ul>
+                    <a href="contato.html" class="segment-arrow" aria-label="Ver soluções para Indústria">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </article>
 
         </div>
     </div>
 </section>
-
  <!--  ==================== || JAVASCRIPT - EFEITO MENU MOBILE || ====================  -->
 <script>
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -275,8 +351,6 @@
         navLinks.classList.toggle('active');
     });
 </script>
-
-
 </body>
 </html> 
 

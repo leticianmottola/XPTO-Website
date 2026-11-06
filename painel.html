@@ -3,333 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel de Performance XPTO</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Painel de Performance - XPTO </title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Fontes Google -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        * {
-            font-family: 'Poppins', sans-serif;
-        }
+    * {
+        font-family: 'Poppins', sans-serif;
+        box-sizing: border-box;
+    }
 
-        /* Fundo Mesh Grid Dark */
-        body {
-            background-color: transparent;
-            background-size: 50px 50px;
-            background-position: center top;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Efeitos de Luz / Halo de Fundo */
-        .glow-halo-purple {
-            position: fixed;
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 700px;
-            height: 700px;
-            filter: blur(100px);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .glow-halo-blue {
-            position: fixed;
-            bottom: 10%;
-            right: 15%;
-            width: 500px;
-            height: 500px;
-            filter: blur(90px);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Container Principal Glassmorphism */
-        .dashboard-glass-container {
-            background: rgba(18, 14, 26, 0.65);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 28px;
-            box-shadow: 
-                0 0 60px rgba(168, 85, 247, 0.22),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15);
-        }
-
-        /* Cards Internos */
-        .kpi-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+    body {
+        background-position: center top;
+        min-height: 100vh;
+        margin: 0;
+        padding: 16px; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; 
+        overflow-x: hidden;
+        overflow-y: auto; 
+    }
+        
+        .chart-card {
+            background-color: #120e1a;
             border-radius: 18px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+            0 8px 32px rgba(179, 165, 194, 0.1),
+            inset 0 1px 0 rgba(254, 217, 255, 0.411),
+            inset 0 -1px 0 rgba(86, 4, 153, 0.1),
+            inset 0 0 2px 1px rgba(169, 85, 247, 0.623)
         }
 
-        .kpi-card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(168, 85, 247, 0.4);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.15);
+        .chart-card:hover {
+            background-color: #120e1a;
+            border-color: rgba(168, 85, 247, 0.35);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.12);
         }
 
-        /* Card Destaque (Primeiro Card) */
-        .kpi-card-highlight {
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(255, 255, 255, 0.03) 100%);
-            border: 1px solid rgba(168, 85, 247, 0.4);
-            box-shadow: inset 0 0 20px rgba(168, 85, 247, 0.15);
-        }
-
-        /* Estilização do Select Customizado */
         .glass-select {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             color: #e2e8f0;
             border-radius: 12px;
-            padding: 8px 16px;
+            padding: 6px 14px;
+            font-size: 0.8rem;
             outline: none;
-            transition: all 0.25s ease;
             cursor: pointer;
+            transition: all 0.25s ease;
         }
 
         .glass-select:hover, .glass-select:focus {
-            border-color: rgba(168, 85, 247, 0.6);
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+            border-color: rgba(168, 85, 247, 0.7);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.25);
         }
 
         .glass-select option {
             background: #120e1a;
             color: #ffffff;
         }
-
-        /* Sombra Glow dos Ícones */
-        .icon-glow-purple {
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
-        }
-        .icon-glow-pink {
-            box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
-        }
-        .icon-glow-cyan {
-            box-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
-        }
-        .icon-glow-green {
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
-        }
     </style>
 </head>
-<body class="flex items-center justify-center p-4 sm:p-6 md:p-10 min-h-screen relative">
+<body>
 
-    <!-- Halos de Luz no Fundo -->
-    <div class="glow-halo-purple"></div>
-    <div class="glow-halo-blue"></div>
-
-    <!-- MAIN DASHBOARD CONTAINER -->
-    <div class="dashboard-glass-container w-full max-w-6xl p-6 sm:p-8 relative z-10 my-auto">
-        
-        <!-- HEADER DO PAINEL -->
-        <header class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-white/10">
-            <div>
-                <h1 class="text-xl sm:text-2xl font-bold tracking-wider text-white uppercase flex items-center gap-3">
-                    <span class="w-3 h-3 rounded-full bg-purple-500 animate-pulse shadow-[0_0_10px_#a855f7]"></span>
-                    Painel de Performance XPTO
-                </h1>
-                <p class="text-xs text-purple-300/60 mt-1">Monitoramento em tempo real de infraestrutura & processos</p>
-            </div>
-
-            <!-- FILTRO DE PERÍODO INTERATIVO -->
-            <div class="flex items-center gap-2">
-                <select id="timeframeSelect" class="glass-select text-xs sm:text-sm font-medium">
-                    <option value="30d" selected>Últimos 30 Dias</option>
-                    <option value="7d">Últimos 7 Dias</option>
-                    <option value="90d">Últimos 90 Dias</option>
-                    <option value="2026">Ano de 2026</option>
-                </select>
-            </div>
-        </header>
-
-        <!-- GRID DE CARDS KPI DE TOPO (4 COLUNAS) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-8">
-            
-            <!-- Card 1: Processos Automatizados -->
-            <div class="kpi-card kpi-card-highlight p-5 flex flex-col justify-between">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-full bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-400 icon-glow-purple">
-                        <!-- Ícone Engrenagem -->
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                    </div>
-                    <span class="text-xs font-medium text-slate-300 leading-tight">Processos<br>Automatizados</span>
-                </div>
-                <div class="flex items-baseline justify-between">
-                    <span id="kpi-processos" class="text-3xl font-bold text-purple-300 tracking-tight">88%</span>
-                    <span class="text-[10px] text-purple-400/80 bg-purple-500/10 px-2 py-0.5 rounded-full border border-purple-500/20">Meta: 80%</span>
-                </div>
-            </div>
-
-            <!-- Card 2: Tempo de Ciclo de Processo -->
-            <div class="kpi-card p-5 flex flex-col justify-between">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-full bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-400 icon-glow-pink">
-                        <!-- Ícone Cronômetro -->
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <span class="text-xs font-medium text-slate-300 leading-tight">Tempo de Ciclo<br>de Processo</span>
-                </div>
-                <div class="flex items-baseline justify-between">
-                    <span id="kpi-tempo" class="text-3xl font-bold text-emerald-400 tracking-tight">-30%</span>
-                    <span class="text-[10px] text-emerald-400/80 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">Redução</span>
-                </div>
-            </div>
-
-            <!-- Card 3: Disponibilidade de Nuvem -->
-            <div class="kpi-card p-5 flex flex-col justify-between">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-full bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 icon-glow-cyan">
-                        <!-- Ícone Nuvem -->
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h12a5 5 0 001-9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                        </svg>
-                    </div>
-                    <span class="text-xs font-medium text-slate-300 leading-tight">Disponibilidade<br>de Nuvem</span>
-                </div>
-                <div class="flex items-baseline justify-between">
-                    <span id="kpi-nuvem" class="text-3xl font-bold text-cyan-300 tracking-tight">99.9%</span>
-                    <span class="text-[10px] text-cyan-400/80 bg-cyan-500/10 px-2 py-0.5 rounded-full border border-cyan-500/20">SLA Ativo</span>
-                </div>
-            </div>
-
-            <!-- Card 4: Eficiência Operacional -->
-            <div class="kpi-card p-5 flex flex-col justify-between">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 icon-glow-green">
-                        <!-- Ícone Gráfico de Alta -->
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                        </svg>
-                    </div>
-                    <span class="text-xs font-medium text-slate-300 leading-tight">Eficiência<br>Operacional</span>
-                </div>
-                <div class="flex items-baseline justify-between">
-                    <span id="kpi-eficiencia" class="text-3xl font-bold text-emerald-300 tracking-tight">+15%</span>
-                    <span class="text-[10px] text-emerald-400/80 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">Crescimento</span>
-                </div>
-            </div>
-
+    <div class="dashboard-card w-full p-4 sm:p-6 rounded-2xl">        
+<!-- ================ || HEADER PAINEL || =================== -->
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 sm:mb-6">
+        <div>
+            <h3 class="font-bold text-white text-base sm:text-lg tracking-wide">PAINEL DE PERFORMANCE XPTO</h3>
+            <p class="text-xs text-purple-300 opacity-70">Monitoramento e Otimização em Tempo Real</p>
         </div>
-
-        <!-- SEÇÃO DOS GRÁFICOS (GRID 2 COLUNAS ASSIMÉTRICAS) -->
-        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+        <div>
+<!-- ================ || SELETOR DE PERÍODO || =================== -->
+                <select id="timeframeSelect"  class="bg-white/5 border border-purple-500/30 text-xs sm:text-sm text-purple-200 rounded-xl px-3 py-1.5 focus:outline-none w-full sm:w-auto">
+                    <option value="30d" class="bg-gray-900 text-white">Últimos 30 Dias</option>
+                    <option value="7d" class="bg-gray-900 text-white">Últimos 7 Dias</option>
+                    <option value="90d" class="bg-gray-900 text-white">Últimos 90 Dias</option>
+                    <option value="2026" class="bg-gray-900 text-white">Este Ano</option>
+                </select>
+        </div>
+    </div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">      
             
-            <!-- Gráfico da Esquerda: Crescimento de Eficiência Mensal (Linha/Área) -->
-            <div class="lg:col-span-3 kpi-card p-5 sm:p-6 flex flex-col justify-between">
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-sm font-semibold text-slate-200 tracking-wide">Crescimento de Eficiência Mensal</h2>
-                    <span class="text-[11px] text-purple-300/60 bg-white/5 px-2.5 py-1 rounded-md border border-white/5">Tendência Geral</span>
+            <!-- [GRÁFICO]: Crescimento de Eficiência Mensal -->
+            <div class="lg:col-span-7 chart-card flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                        <h2 class="text-xs sm:text-sm font-semibold text-slate-200">Crescimento de Eficiência Mensal</h2>
+                    </div>
+                    <span id="badge-eficiencia" class="text-[10px] text-purple-300 font-medium bg-purple-500/15 px-2.5 py-0.5 rounded-full border border-purple-500/30">
+                        +15% Média
+                    </span>
                 </div>
-                <div class="relative w-full h-[240px] sm:h-[260px]">
+                <div class="relative w-full h-[220px] sm:h-[240px]">
                     <canvas id="lineChart"></canvas>
                 </div>
             </div>
 
-            <!-- Gráfico da Direita: Otimização por Setor (Barras) -->
-            <div class="lg:col-span-2 kpi-card p-5 sm:p-6 flex flex-col justify-between">
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-sm font-semibold text-slate-200 tracking-wide">Otimização por Setor</h2>
-                    <span class="text-[11px] text-purple-300/60 bg-white/5 px-2.5 py-1 rounded-md border border-white/5">Setores Ativos</span>
+            <!-- [GRÁFICO]: Otimização por Setor -->
+            <div class="lg:col-span-5 chart-card flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+                        <h2 class="text-xs sm:text-sm font-semibold text-slate-200">Otimização por Setor</h2>
+                    </div>
+                    <span id="badge-setor" class="text-[10px] text-indigo-300 font-medium bg-indigo-500/15 px-2.5 py-0.5 rounded-full border border-indigo-500/30">
+                        TI em Destaque
+                    </span>
                 </div>
-                <div class="relative w-full h-[240px] sm:h-[260px]">
+                <div class="relative w-full h-[220px] sm:h-[240px]">
                     <canvas id="barChart"></canvas>
                 </div>
             </div>
 
         </div>
 
-        <!-- FOOTER DISCRETO -->
-        <footer class="mt-6 pt-4 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400/60 gap-2">
-            <div>XPTO Systems &copy; 2026 — Inteligência Operacional</div>
-            <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                <span>Sistemas 100% Operacionais</span>
+        <footer class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-slate-400/60">
+            <span>Sistemas XPTO &bull; Monitoramento Ativo</span>
+            <div class="flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span>Dados Sincronizados</span>
             </div>
         </footer>
 
     </div>
 
-    <!-- LÓGICA JAVASCRIPT & CHART.JS -->
+<!-- ================ || LÓGICA JAVASCRIPT || =================== -->
     <script>
-        // Dados Simulados para cada Período do Filtro
         const dashboardData = {
             '30d': {
-                kpis: { processos: 88, tempo: -30, nuvem: 99.9, eficiencia: 15 },
+                eficienciaBadge: '+15% Média',
+                setorBadge: 'TI em Destaque',
                 lineLabels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
-                lineData: [42, 52, 63, 68, 78, 88],
+                lineData: [42, 55, 63, 68, 78, 88],
                 barLabels: ['Financeiro', 'RH', 'TI', 'Logística'],
                 barData: [62, 74, 92, 68]
             },
             '7d': {
-                kpis: { processos: 94, tempo: -38, nuvem: 100, eficiencia: 22 },
+                eficienciaBadge: '+22% Esta Semana',
+                setorBadge: 'RH em Alta',
                 lineLabels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
-                lineData: [70, 75, 82, 85, 89, 94],
+                lineData: [70, 74, 82, 85, 89, 95],
                 barLabels: ['Financeiro', 'RH', 'TI', 'Logística'],
-                barData: [78, 82, 98, 75]
+                barData: [78, 88, 96, 75]
             },
             '90d': {
-                kpis: { processos: 81, tempo: -24, nuvem: 99.7, eficiencia: 11 },
+                eficienciaBadge: '+11% Trimestral',
+                setorBadge: 'Financeiro Estável',
                 lineLabels: ['Mês 1', 'Mês 2', 'Mês 3', 'Mês 4', 'Mês 5', 'Mês 6'],
-                lineData: [30, 42, 55, 62, 71, 81],
+                lineData: [32, 45, 54, 62, 71, 81],
                 barLabels: ['Financeiro', 'RH', 'TI', 'Logística'],
-                barData: [55, 65, 85, 60]
+                barData: [58, 65, 84, 60]
             },
             '2026': {
-                kpis: { processos: 91, tempo: -35, nuvem: 99.8, eficiencia: 18 },
+                eficienciaBadge: '+18% Anual',
+                setorBadge: 'Expansão Geral',
                 lineLabels: ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6'],
-                lineData: [25, 45, 60, 72, 83, 91],
+                lineData: [28, 48, 62, 75, 84, 92],
                 barLabels: ['Financeiro', 'RH', 'TI', 'Logística'],
-                barData: [70, 78, 95, 82]
+                barData: [72, 80, 95, 82]
             }
         };
 
-        // Instâncias Globais dos Gráficos
         let lineChartInstance = null;
         let barChartInstance = null;
 
-        // Animação de Contagem dos Números dos KPIs
-        function animateValue(elementId, start, end, duration, prefix = '', suffix = '') {
-            const obj = document.getElementById(elementId);
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const currentVal = (progress * (end - start) + start).toFixed(end % 1 !== 0 ? 1 : 0);
-                obj.innerHTML = `${prefix}${currentVal}${suffix}`;
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
-
-        // Configuração e Inicialização dos Gráficos no Onload
         window.onload = function() {
             
-            /* --- 1. GRÁFICO DE LINHA (CRESCIMENTO DE EFICIÊNCIA MENSAL) --- */
             const ctxLine = document.getElementById('lineChart').getContext('2d');
             
-            // Gradiente Roxo -> Azul para Área
-            const lineGradient = ctxLine.createLinearGradient(0, 0, 0, 260);
+            const lineGradient = ctxLine.createLinearGradient(0, 0, 0, 220);
             lineGradient.addColorStop(0, 'rgba(168, 85, 247, 0.45)');
-            lineGradient.addColorStop(0.6, 'rgba(99, 102, 241, 0.15)');
-            lineGradient.addColorStop(1, 'rgba(18, 14, 26, 0)');
+            lineGradient.addColorStop(0.7, 'rgba(99, 102, 241, 0.1)');
+            lineGradient.addColorStop(1, 'rgba(16, 12, 24, 0)');
 
             lineChartInstance = new Chart(ctxLine, {
                 type: 'line',
@@ -341,13 +195,13 @@
                         fill: true,
                         backgroundColor: lineGradient,
                         borderColor: '#a855f7',
-                        borderWidth: 3,
+                        borderWidth: 2.5,
                         pointBackgroundColor: '#ffffff',
                         pointBorderColor: '#a855f7',
                         pointBorderWidth: 2,
                         pointRadius: 4,
-                        pointHoverRadius: 7,
-                        tension: 0.45 // Curva suave Spline
+                        pointHoverRadius: 6,
+                        tension: 0.42 
                     }]
                 },
                 options: {
@@ -356,23 +210,23 @@
                     plugins: {
                         legend: { display: false },
                         tooltip: {
-                            backgroundColor: 'rgba(18, 14, 26, 0.9)',
+                            backgroundColor: 'rgba(16, 12, 24, 0.95)',
                             titleColor: '#ffffff',
                             bodyColor: '#a855f7',
-                            borderColor: 'rgba(168, 85, 247, 0.3)',
+                            borderColor: 'rgba(168, 85, 247, 0.4)',
                             borderWidth: 1,
-                            padding: 10,
+                            padding: 8,
                             displayColors: false
                         }
                     },
                     scales: {
                         x: {
-                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                            ticks: { color: '#94a3b8', font: { family: 'Poppins', size: 11 } }
+                            grid: { color: 'rgba(255, 255, 255, 0.04)' },
+                            ticks: { color: '#94a3b8', font: { family: 'Poppins', size: 10 } }
                         },
                         y: {
-                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                            ticks: { color: '#94a3b8', font: { family: 'Poppins', size: 11 } },
+                            grid: { color: 'rgba(255, 255, 255, 0.04)' },
+                            ticks: { color: '#94a3b8', font: { family: 'Poppins', size: 10 } },
                             min: 0,
                             max: 100
                         }
@@ -380,13 +234,11 @@
                 }
             });
 
-            /* --- 2. GRÁFICO DE BARRAS (OTIMIZAÇÃO POR SETOR) --- */
             const ctxBar = document.getElementById('barChart').getContext('2d');
 
-            // Gradiente Vertical para as Barras
-            const barGradient = ctxBar.createLinearGradient(0, 0, 0, 240);
+            const barGradient = ctxBar.createLinearGradient(0, 0, 0, 220);
             barGradient.addColorStop(0, '#a855f7');
-            barGradient.addColorStop(1, '#3b82f6');
+            barGradient.addColorStop(1, '#4f46e5');
 
             barChartInstance = new Chart(ctxBar, {
                 type: 'bar',
@@ -396,9 +248,9 @@
                         label: 'Otimização (%)',
                         data: dashboardData['30d'].barData,
                         backgroundColor: barGradient,
-                        borderRadius: 8,
+                        borderRadius: 6,
                         borderSkipped: false,
-                        barThickness: 28
+                        barThickness: 24
                     }]
                 },
                 options: {
@@ -407,22 +259,23 @@
                     plugins: {
                         legend: { display: false },
                         tooltip: {
-                            backgroundColor: 'rgba(18, 14, 26, 0.9)',
+                            backgroundColor: 'rgba(16, 12, 24, 0.95)',
                             titleColor: '#ffffff',
-                            bodyColor: '#38bdf8',
-                            borderColor: 'rgba(56, 189, 248, 0.3)',
+                            bodyColor: '#818cf8',
+                            borderColor: 'rgba(129, 140, 248, 0.4)',
                             borderWidth: 1,
-                            padding: 10,
+                            padding: 8,
                             displayColors: false
                         }
                     },
                     scales: {
                         x: {
-                            grid: { display: false },
+                            /* MODIFICAÇÃO: Ativadas as linhas verticais para alinhar ao estilo do primeiro gráfico */
+                            grid: { color: 'rgba(255, 255, 255, 0.04)' },
                             ticks: { color: '#94a3b8', font: { family: 'Poppins', size: 10 } }
                         },
                         y: {
-                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            grid: { color: 'rgba(255, 255, 255, 0.04)' },
                             ticks: { color: '#94a3b8', font: { family: 'Poppins', size: 10 } },
                             min: 0,
                             max: 100
@@ -431,28 +284,22 @@
                 }
             });
 
-            // Listener para Mudança do Filtro de Período
             document.getElementById('timeframeSelect').addEventListener('change', function(e) {
                 const selectedKey = e.target.value;
                 const newData = dashboardData[selectedKey];
 
                 if (!newData) return;
 
-                // 1. Atualizar KPIs com Animação Numérica
-                animateValue('kpi-processos', 50, newData.kpis.processos, 600, '', '%');
-                animateValue('kpi-tempo', -10, newData.kpis.tempo, 600, '', '%');
-                animateValue('kpi-nuvem', 95, newData.kpis.nuvem, 600, '', '%');
-                animateValue('kpi-eficiencia', 0, newData.kpis.eficiencia, 600, '+', '%');
+                document.getElementById('badge-eficiencia').innerText = newData.eficienciaBadge;
+                document.getElementById('badge-setor').innerText = newData.setorBadge;
 
-                // 2. Atualizar Gráfico de Linha
                 lineChartInstance.data.labels = newData.lineLabels;
                 lineChartInstance.data.datasets[0].data = newData.lineData;
-                lineChartInstance.update();
+                lineChartInstance.update('active');
 
-                // 3. Atualizar Gráfico de Barras
                 barChartInstance.data.labels = newData.barLabels;
                 barChartInstance.data.datasets[0].data = newData.barData;
-                barChartInstance.update();
+                barChartInstance.update('active');
             });
         };
     </script>

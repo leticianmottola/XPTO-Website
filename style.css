@@ -2,36 +2,30 @@
    1. DEFINIÇÃO DE VARIÁVEIS GLOBAIS + CONFIGURAÇÃO DO TEMA
    ========================================================================== */
 :root {
-    /* Tipografia */
     --font-title: 'Poppins', sans-serif;
     --font-body: 'Poppins', sans-serif;
     font-family: "Poppins", sans-serif;
 
-    /* Cores principais */
     --bg-dark: #0a0a0c;
+    --bg-purple: #29046d;
     --bg-card: rgba(8, 6, 8, 0.932);
     --bg-card-hover: #ffffff0f;
     --border-color: #8a2be233;
     --border-hover: #9d4edd;
     
-    /* Neon e gradientes */
     --accent-purple: #8a2be2;
     --accent-glow: #a855f7;
     --text-primary: #ffffff;
     --text-secondary: #b8b8d8;
     --text-muted: #807397;
     
-    /* Gradientes */
     --gradient-primary: linear-gradient(135deg, #9361c2 0%, #52249c 100%);
     --gradient-glow: radial-gradient(circle at 50% 0%, #8a2be259 0%, #0a0a0c 75%);
     --gradient-card: linear-gradient(180deg, #8a2be214 0%, #0a0a0c99 100%);
 
-
-    /* Sombras e brilhos */
     --shadow-glow: 0 0 25px rgba(146, 79, 209, 0.35);
     --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.5);
     
-    /* Transições e bordas */
     --radius-sm: 30px;
     --radius-md: 16px;
     --radius-lg: 24px;
@@ -43,7 +37,6 @@ h1, h2, h3, .logo-text {
     font-weight: 400;
     font-style: normal;
 }
-
 
 * {
     margin: 0;
@@ -57,21 +50,7 @@ html {
 }
 
 body {
-    background-color: #0a0a0c;
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px; /* Tamanho dos quadrados do grid */
-    background-position: center top;
-    color: #ffffff;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden; 
-}
-
-body {
-    background-color: #050508; /* Tom mais escuro e profundo */
-    /* Grid sutil */
+    background-color: #050508;
     background-image: 
         linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
@@ -84,7 +63,6 @@ body {
     z-index: 0;
 }
 
-/* --- Mancha de Brilho Esquerda (Azulada/Roxa) --- */
 body::before {
     content: '';
     position: absolute;
@@ -98,7 +76,6 @@ body::before {
     z-index: -1;
 }
 
-/* --- Mancha de Brilho Direita (Roxa/Rosa) --- */
 body::after {
     content: '';
     position: absolute;
@@ -134,7 +111,7 @@ img {
 }
 
 /* ==========================================================================
-   3. CABEÇALHO (HEADER & NAVBAR)
+   2. CABEÇALHO (HEADER & NAVBAR)
    ========================================================================== */
 .header {
     position: fixed;
@@ -163,7 +140,6 @@ img {
         inset 0 -1px 0 rgba(86, 4, 153, 0.1),
         inset 0 0 2px 1px rgba(169, 85, 247, 0.623);
     position: relative;
-
 }
 
 .logo {
@@ -194,10 +170,8 @@ img {
 }
 
 
-
-
 /* ==========================================================================
-   4. BOTÕES, BADGES E UTILITÁRIOS
+   3. BOTÕES, BADGES E UTILITÁRIOS
    ========================================================================== */
 .btn {
     display: inline-flex;
@@ -308,13 +282,11 @@ img {
 .section-subtitle {
     color: var(--text-secondary);
     font-size: 13px;
-
 }
 
 /* ==========================================================================
-   5. HERO SECTION 
+   4. HERO SECTION (SEÇÃO PRINCIPAL)
    ========================================================================== */
-
 .hero {
     position: relative;
     padding: 170px 24px 100px 24px;
@@ -334,25 +306,13 @@ img {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
     letter-spacing: -1px;
-
-}
-
-.hero-title-span {
-    font-family: var(--font-title);
-    font-size: 3.2rem;
-    font-weight: 560;
-    line-height: 1.15;
-    margin-bottom: 1.5rem;
-    letter-spacing: -1px;
-
 }
 
 .hero-description {
     font-size: 15px;
     color: var(--text-secondary);
     margin-bottom: 40px;
-    line-height: 1.7;
-    
+    line-height: 1.7;  
 }
 
 .hero-buttons {
@@ -362,7 +322,10 @@ img {
     gap: 16px;
 }
 
-/* --- LOGOS DAS EMPRESAS PARCEIRAS --- */
+/* ==========================================================================
+   5. CARROSSEL DE EMPRESAS
+   ========================================================================== */
+
 .trusted-by {
     max-width: 1200px;
     margin: 60px auto 0 auto;
@@ -373,30 +336,54 @@ img {
 
 .trusted-by p {
     color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 24px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
 }
 
-.trusted-logos {
+.trusted-logos-fade {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+.trusted-logos-carousel {
     display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    opacity: 0.6; /* Deixa as logos um pouco mais sutis */
+    align-items: center;
+    gap: 60px; 
+    width: max-content; 
+    animation: scrollMarquee 20s linear infinite; 
 }
 
-.trusted-logos img {
-    height: 35px; /* Altura padrão para as logos não ficarem desproporcionais */
+.trusted-logos-fade:hover .trusted-logos-carousel {
+    animation-play-state: paused;
+}
+
+.trusted-logos-carousel img {
+    height: 35px;
+    width: auto;
     object-fit: contain;
-    filter: grayscale(100%) brightness(200%); /* Transforma logos coloridas em brancas/cinzas */
-    transition: var(--transition);
+    filter: grayscale(100%) brightness(200%); 
+    opacity: 0.6;
+    transition: all 0.3s ease;
 }
 
-.trusted-logos img:hover {
+.trusted-logos-carousel img:hover {
     filter: grayscale(0%) brightness(100%);
     opacity: 1;
+}
+
+@keyframes scrollMarquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); 
+    }
 }
 
 /* ==========================================================================
@@ -464,7 +451,6 @@ img {
         inset 0 1px 0 rgba(254, 217, 255, 0.411),
         inset 0 -1px 0 rgba(86, 4, 153, 0.1),
         inset 0 0 2px 1px rgba(169, 85, 247, 0.623);
-    
 }
 
 .card-header {
@@ -533,7 +519,6 @@ img {
     opacity: 0.8;
 }
 
-/* Título e Texto */
 .service-card h3 {
     font-family: var(--font-title);
     font-size: 1.2rem;
@@ -549,11 +534,6 @@ img {
     transition: color 0.3s ease;
 }
 
-/* ==========================================================================
-   EFEITO HOVER (IGUAL À REFERÊNCIA)
-   - Fundo vira Gradiente Roxo
-   - Ícones e Elementos ganham cor BRANCA
-   ========================================================================== */
 .service-card:hover {
     background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
     border-color: rgba(255, 255, 255, 0.4);
@@ -578,102 +558,159 @@ img {
     color: rgba(255, 255, 255, 0.9);
 }
 
-
 .service-card p {
     color: var(--text-secondary);
     font-size: 0.95rem;
 }
 
+.service-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    gap: 16px;
+}
+
 /* ==========================================================================
-   8. PROCESSO EM 4 PASSOS
+   SEÇÃO DE SEGMENTOS (PÚBLICO-ALVO)
    ========================================================================== */
-.process-section {
-    padding: 100px 0;
-    background: rgba(255, 255, 255, 0.01);
-}
-
-.process-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
-}
-
-.process-card {
-    background: var(--bg-card);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: var(--radius-md);
-    padding: 32px 24px;
+.segments-section {
+    padding: 30px 0;
     position: relative;
+    background-color: var(--bg-purple);
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    background-position: center top;
+    color: #ffffff;
+    position: relative;
+    overflow-x: hidden; 
+    z-index: 0;
 }
 
-.process-step {
+.segments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 35px;
+}
+
+.segment-card {
+    position: relative;
+    height: 250px;
+    border-radius: 40px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-color: #15043ffa;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        inset 0 0;
+            border: 0.3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 8px 32px rgba(179, 165, 194, 0.1),
+        inset 0 1px 0 rgba(254, 217, 255, 0.411),
+        inset 0 -1px 0 rgba(86, 4, 153, 0.1),
+        inset 0 0 2px 1px rgba(169, 85, 247, 0.623);
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+.segment-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg, 
+        rgba(5, 5, 8, 0.2) 0%, 
+        rgba(5, 5, 8, 0.75) 50%, 
+        rgba(5, 5, 8, 0.95) 100%
+    );
+    transition: opacity 0.4s ease, background 0.4s ease;
+}
+
+.segment-content {
+    position: absolute;
+    inset: 0;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 2;
+}
+
+.segment-content h3 {
     font-family: var(--font-title);
-    font-size: 2.5rem;
-    color: var(--accent-glow);
-    opacity: 0.8;
-    display: block;
-    margin-bottom: 16px;
-}
-
-.process-card h3 {
-    font-size: 1.15rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #ffffff;
     margin-bottom: 12px;
 }
 
-.process-card p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+.segment-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
+.segment-content li {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #b8b8d8);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.segment-content li::before {
+    content: "•";
+    color: var(--accent-glow, #a855f7);
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.segment-arrow {
+    position: absolute;
+    bottom: 28px;
+    right: 28px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(27, 17, 17, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.segment-card:hover {
+    transform: translateY(-8px);
+}
+
+.segment-card:hover .segment-overlay {
+    background: linear-gradient(
+        180deg, 
+        rgba(48, 4, 150, 0.25) 0%, 
+        rgba(5, 5, 8, 0.8) 50%, 
+        rgba(5, 5, 8, 0.98) 100%
+    );
+}
+
+.segment-card:hover .segment-arrow {
+    background: linear-gradient(135deg, #9361c2 0%, #52249c 100%);
+    border-color: var(--accent-glow, #a855f7);
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
+}
 /* ==========================================================================
    9. CASOS DE SUCESSO / PORTFÓLIO
    ========================================================================== */
-.portfolio-preview {
-    padding: 120px 0;
-}
-
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-    margin-bottom: 48px;
-}
-
-.portfolio-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 32px;
-    transition: var(--transition);
-}
-
-.portfolio-card:hover {
-    border-color: var(--accent-glow);
-    transform: translateY(-4px);
-}
-
-.portfolio-tag {
-    display: inline-block;
-    font-size: 0.8rem;
-    color: var(--accent-glow);
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 12px;
-}
-
-.portfolio-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 12px;
-}
-
-.portfolio-card p {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-}
-
-.center-btn {
-    text-align: center;
-}
 
 /* ==========================================================================
    10. PERGUNTAS FREQUENTES (FAQ)
@@ -869,11 +906,20 @@ img {
     .hero-buttons {
         justify-content: center;
     }
-    .hero-image img {
-        margin: 0 auto;
-        max-width: 80%; /* Reduz a imagem no tablet */
-    }
+
 }
+
+@media (max-width: 768px) {
+        .hero-image iframe {
+            height: 800px; 
+        }
+    }
+
+@media (max-width: 480px) {
+        .hero-image iframe {
+            height: 840px;
+        }
+    }
 
 @media (max-width: 768px) {
     .mobile-menu-btn {
@@ -887,7 +933,7 @@ img {
         margin-top: 20px;
     }
 
-    /* Menu mobile drop-down corrigido */
+    
     ul#navLinks {
         display: flex;
         flex-direction: column;
@@ -899,19 +945,19 @@ img {
         background: rgba(10, 10, 12, 0.98); 
         backdrop-filter: blur(15px);
         padding: 30px 24px;
-        border-radius: 20px; /* Bordas arredondadas para combinar com o header */
+        border-radius: 20px; 
         border: 1px solid var(--border-color);
         transform: translateY(-150%);
         opacity: 0;
         transition: transform 0.4s ease, opacity 0.4s ease;
         z-index: 999;
-        pointer-events: none; /* Previne cliques acidentais quando fechado */
+        pointer-events: none; 
     }
 
     ul#navLinks.active {
         transform: translateY(0);
         opacity: 1;
-        pointer-events: auto; /* Reativa os cliques quando aberto */
+        pointer-events: auto; 
     }
 
     .hero-title {
