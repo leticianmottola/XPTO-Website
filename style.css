@@ -483,8 +483,6 @@ img {
     position: relative;
 }
 
-
-
 .logo {
     display: flex;
     align-items: center;
@@ -511,7 +509,6 @@ img {
     font-size: 15px;
     font-weight: 300;
 }
-
 
 /* ==========================================================================
    2. [HOME] -> HERO SECTION (SEÇÃO PRINCIPAL)
@@ -618,7 +615,6 @@ img {
 /* ==========================================================================
    4. [HOME] -> GRELHA DE SERVIÇOS (SERVICES GRID)
    ========================================================================== */
-
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1003,11 +999,9 @@ img {
     line-height: 1.3;
 }
 
-
 /* ==========================================================================
    1. [SOBRE NÓS] -> CABEÇALHO (HEADER) & ESTILOS DA PÁGINA
    ========================================================================== */
-
 .about-hero {
     position: relative;
     padding: 165px 0 80px 0;
@@ -1052,7 +1046,6 @@ img {
 /* ==========================================================================
    2. [SOBRE NÓS] -> GRELHA DE MÉTRICAS (METRICS GRID)
    ========================================================================== */
-
 .about-metrics-grid {
     position: relative;
     z-index: 1;
@@ -1142,7 +1135,6 @@ img {
 /* ==========================================================================
    3. [SOBRE NÓS] -> MISSÃO, VISÃO E VALORES (ESSENCE)
    ========================================================================== */
-
 .about-essence-section {
     padding: 90px 0;
     position: relative;
@@ -1286,7 +1278,6 @@ img {
 /* ==========================================================================
    4. [SOBRE NÓS] -> METODOLOGIA E PROCESSOS (PROCESS)
    ========================================================================== */
-
 .about-process-section {
     padding: 90px 0;
 }
@@ -1425,7 +1416,6 @@ img {
 /* ==========================================================================
    1. [CONTATO] -> CABEÇALHO (HEADER) & ESTILOS DA PÁGINA
    ========================================================================== */
-
 .contact-page {
     position: relative;
     padding: 170px 24px 100px 24px;
@@ -1465,7 +1455,6 @@ img {
 /* ==========================================================================
    2. [CONTATO] -> FORMULÁRIO (FORM)
    ========================================================================== */
-
 .form-section {
     padding-bottom: 100px;
 }
@@ -1592,7 +1581,6 @@ img {
 /* ==========================================================================
    3. [CONTATO] -> ZONA DO FAQ (FAQ SECTION)
    ========================================================================== */
-
 .faq-section {
     padding: 80px 0 120px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -1696,10 +1684,10 @@ img {
 .faq-item.active .icon-plus {
     color: var(--accent-glow, #a855f7);
 }
+
 /* ==========================================================================
    1. [SERVIÇOS] -> CABEÇALHO (HEADER) & ESTILOS DA PÁGINA
    ========================================================================== */
-
 .services-page {
     padding: 170px 24px 100px 24px;
 }
@@ -1727,7 +1715,6 @@ img {
 /* ==========================================================================
    2. [SERVIÇOS] -> PLANOS DE ASSINATURA (SAAS)
    ========================================================================== */
-
 .pricing-section {
     padding: 60px 0 100px 0;
 }
@@ -1869,7 +1856,6 @@ img {
 /* ==========================================================================
    3. [SERVIÇOS] -> MÓDULOS ADICIONAIS (ADD-ONS) 
    ========================================================================== */
-
 .addons-section {
     padding: 80px 0;
     background: rgba(255, 255, 255, 0.01);
@@ -1954,7 +1940,6 @@ img {
 /* ==========================================================================
    4. [SERVIÇOS] -> SERVIÇOS DE TECNOLOGIA (TECH SERVICES)
    ========================================================================== */
-
 .tech-services-section {
     padding: 100px 0;
 }
@@ -2118,7 +2103,6 @@ img {
     position: relative;
 }
 
-/* Estilo para quando a imagem for inserida */
 .project-image-placeholder img {
     width: 100%;
     height: 100%;
@@ -2232,7 +2216,7 @@ img {
 }
 
 .rating-stars {
-    color: #fbbf24; /* Amarelo dourado */
+    color: #fbbf24;
     font-size: 1.2rem;
     letter-spacing: 2px;
 }
@@ -2243,7 +2227,7 @@ img {
     line-height: 1.7;
     margin-bottom: 30px;
     font-family: 'Inter', sans-serif;
-    min-height: 120px; /* Mantém os cartões alinhados */
+    min-height: 120px; 
 }
 
 .client-info {
@@ -2269,9 +2253,6 @@ img {
 /* ==========================================================================
    [SITE - XPTO] -> RESPONSIVIDADE GERAL (MEDIA QUERIES)
    ========================================================================== */
-@media (max-width: 1024px){
-
-}
    @media (max-width: 1024px) {
     .pricing-grid {
         grid-template-columns: 1fr;
@@ -2398,7 +2379,7 @@ img {
         opacity: 1;
         visibility: visible;
         transform: translateY(0); 
-    }
+    }    
     .essence-header {
         grid-template-columns: 1fr;
         gap: 18px;
@@ -2406,8 +2387,12 @@ img {
     }
     .essence-row,
     .essence-row.essence-row-reverse {
-        grid-template-columns: 1fr;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+        height: auto !important; 
         min-height: auto;
+        align-items: stretch !important; 
     }
     .essence-row.essence-row-reverse .essence-image-card {
         order: 1;
@@ -2416,18 +2401,11 @@ img {
         order: 2;
     }
     .essence-image-card {
-        height: 220px;
-        min-height: 220px;
+        height: 100% !important;
+        min-height: 200px;
     }
     .essence-gradient-card {
-        padding: 18px 24px;
-    }
-    .essence-row,
-    .essence-row.essence-row-reverse {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 20px !important; 
-        align-items: center;
+        padding: 16px 12px !important; 
     }
 }
 
@@ -2552,10 +2530,19 @@ img {
     .hero-image iframe {
             height: 840px;
         }
+    .essence-header {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-bottom: 36px;
+    }
     .essence-row,
     .essence-row.essence-row-reverse {
-        grid-template-columns: 1fr;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important; 
+        gap: 12px !important; 
+        height: auto !important; 
         min-height: auto;
+        align-items: stretch !important; 
     }
     .essence-row.essence-row-reverse .essence-image-card {
         order: 1;
@@ -2564,18 +2551,11 @@ img {
         order: 2;
     }
     .essence-image-card {
-        height: 220px;
-        min-height: 220px;
+        height: 100% !important; 
+        min-height: 200px;
     }
     .essence-gradient-card {
-        padding: 18px 24px;
-    }
-    .essence-row,
-    .essence-row.essence-row-reverse {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 20px !important; 
-        align-items: center;
+        padding: 16px 12px !important; 
     }
 }
 
