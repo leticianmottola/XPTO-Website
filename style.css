@@ -463,7 +463,8 @@ img {
 
 .header-container {
     max-width: 1200px;
-    margin: 12px 100px;
+    margin: 12px auto;
+    width: 95%;
     padding: 5px 10px;
     display: flex;
     align-items: center;
@@ -481,6 +482,8 @@ img {
         inset 0 0 2px 1px rgba(169, 85, 247, 0.623);
     position: relative;
 }
+
+
 
 .logo {
     display: flex;
@@ -2266,8 +2269,10 @@ img {
 /* ==========================================================================
    [SITE - XPTO] -> RESPONSIVIDADE GERAL (MEDIA QUERIES)
    ========================================================================== */
+@media (max-width: 1024px){
 
-@media (max-width: 1024px) {
+}
+   @media (max-width: 1024px) {
     .pricing-grid {
         grid-template-columns: 1fr;
         max-width: 500px;
