@@ -140,10 +140,8 @@
                     <p class="hero-description">Tem dúvidas? A nossa seção garantida de FAQ tem tudo o que precisa com respostas rápidas às questões mais comuns.</p>
                 </div>
 
-                <!-- Lado Direito: Accordion -->
                 <div class="faq-accordion">
                     
-                    <!-- Item 1 -->
                     <div class="faq-item">
                         <button class="faq-question">
                             O que é preciso para começar?
@@ -154,7 +152,6 @@
                         </div>
                     </div>
 
-                    <!-- Item 2 -->
                     <div class="faq-item">
                         <button class="faq-question">
                             Que tipo de personalização está disponível?
@@ -165,7 +162,6 @@
                         </div>
                     </div>
 
-                    <!-- Item 3 -->
                     <div class="faq-item">
                         <button class="faq-question">
                             Os serviços disponíveis da XPTO são de fácil compreensão para novos usuários?
@@ -176,7 +172,6 @@
                         </div>
                     </div>
 
-                    <!-- Item 4 -->
                     <div class="faq-item">
                         <button class="faq-question">
                             É preciso saber algo relacionado a programação?
@@ -187,7 +182,6 @@
                         </div>
                     </div>
 
-                    <!-- Item 5 -->
                     <div class="faq-item">
                         <button class="faq-question">
                             Quanto tempo demora a implementação?
@@ -279,6 +273,7 @@
                     </button>
                 </form>
                 <span class="newsletter-note">Sem spam. Cancele quando quiser.</span>
+                <span class="newsletter-note">Projeto de Desenvolvimento de Software - Univesidade Nove de Julho (UNINOVE).</span>
             </div>
 
         </div>
@@ -308,17 +303,14 @@
                 const questionBtn = item.querySelector('.faq-question');
                 
                 questionBtn.addEventListener('click', () => {
-                    // Fecha todos os outros (opcional, remova se quiser abrir vários em simultâneo)
                     const currentlyActive = document.querySelector('.faq-item.active');
                     if (currentlyActive && currentlyActive !== item) {
                         currentlyActive.classList.remove('active');
                         currentlyActive.querySelector('.icon-plus').textContent = '+';
                     }
 
-                    // Alterna o estado do item clicado
                     item.classList.toggle('active');
                     
-                    // Muda o ícone de + para -
                     const icon = item.querySelector('.icon-plus');
                     if (item.classList.contains('active')) {
                         icon.textContent = '−';
